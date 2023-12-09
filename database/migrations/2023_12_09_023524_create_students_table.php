@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 45);
-            $table->string('address', 100);
-            $table->string('phone', 12);
-            $table->string('email', 100);
-            $table->date('birthday');
-            $table->integer('city_id');
+            $table->string('name', 55);
+            $table->string('address', 150);
+            $table->string('phone', 20);
+            $table->string('email', 55)->unique();
+            $table->date('birthday',);
+            $table->foreignId('city_id')->constrained();
             $table->timestamps();
         });
     }
