@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CityController;
 
 
 /*
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/student', [StudentController::class, 'index'])->name('students.index');
+Route::get('/student/{student}', [StudentController::class, 'show'])->name('students.show');
+Route::get('/student-create', [StudentController::class, 'create'])->name('students.create');
+Route::post('/student-create', [StudentController::class, 'store'])->name('students.store');
+Route::get('/student-edit/{student}', [StudentController::class, 'edit'])->name('students.edit');
+Route::put('/student-edit/{student}', [StudentController::class, 'update'])->name('students.edit');
+Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name('students.destroy');

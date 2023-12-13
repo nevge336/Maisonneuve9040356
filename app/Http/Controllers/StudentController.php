@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -12,7 +13,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+        return view('students.index', compact('students'));
     }
 
     /**
@@ -20,23 +22,31 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $cities = City::all();
+        return view('students.create', compact('cities'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'name' => 'required|max:55',
+            'address' => 'required|max:150',
+            'phone' => 'required|max:20',
+            'email' => 'required|email|unique:students,email',
+            'birthday' => 'required|date',
+            'city_id' => 'required|exists:cities,id'
+        ]);
 
+        $newStudent = Student::create($validatedData);
+
+        return redirect()->route('students.index');
+    }    
     /**
      * Display the specified resource.
      */
     public function show(Student $student)
     {
-        //
+        return view('students.show', compact('student'));
     }
 
     /**
@@ -44,7 +54,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        $cities = City::all();
+        return view('students.edit', compact('student', 'cities'));
     }
 
     /**
@@ -52,7 +63,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $student->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'birthday' => $request->birthday,
+            'city_id' => $request->city_id
+        ]);
+
+        return redirect(route('students.show', $student->id))->withSuccess('Profil étudiant modifié avec succès!');
     }
 
     /**
@@ -60,6 +80,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect(route('students.index'))->withSuccess('Profil étudiant supprimé avec succès!');
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('address', 150);
             $table->string('phone', 20);
             $table->string('email', 55)->unique();
-            $table->date('birthday',);
+            $table->date('birthday');
             $table->foreignId('city_id')->constrained();
             $table->timestamps();
         });

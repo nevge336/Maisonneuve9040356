@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StudentFactory extends Factory
@@ -27,7 +28,7 @@ class StudentFactory extends Factory
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
             'birthday' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'city_id' => \App\Models\City::factory(),
+            'city_id' => DB::table('cities')->inRandomOrder()->first()->id,
         ];
     }
 }
