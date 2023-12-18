@@ -17,7 +17,7 @@ use App\Http\Controllers\CityController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/student', [StudentController::class, 'index'])->name('students.index');

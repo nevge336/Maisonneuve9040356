@@ -11,9 +11,17 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        $students = Student::all();
+        $search = $request->get('search');
+
+        if ($search) {
+            $students = Student::where('name', 'like', '%' . $search . '%')->orderBy('name')->paginate(15);
+        } else {
+            $students = Student::orderBy('name')->paginate(15);
+        }
+
         return view('students.index', compact('students'));
     }
 
@@ -39,7 +47,7 @@ class StudentController extends Controller
 
         $newStudent = Student::create($validatedData);
 
-        return redirect()->route('students.index');
+        return redirect()->route('students.index')->withSuccess('Profil étudiant créé avec succès!');
     }    
     /**
      * Display the specified resource.

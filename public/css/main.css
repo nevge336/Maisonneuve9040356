@@ -1,10 +1,9 @@
 
 
 /* Variables */
-@import url(variables/typo);
+@import url(variables/color.css);
 
 
 /* Components */
 @import url(components/image-hero.css);
-@import url(components/entete-hero.css);
 

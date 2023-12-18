@@ -16,19 +16,18 @@
                 <img src="{{ asset('images/logo_mms.png') }}" alt="mms logo acceuil" width="75" height="75" class="d-inline-block align-text-top" />
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Étudiant.e.s
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/student">Afficher la liste</a></li>
+                            <li><a class="dropdown-item" href="/student">Liste</a></li>
                             <li><a class="dropdown-item" href="/student-create">Ajouter</a></li>
-                       
                         </ul>
                     </li>
                 </ul>
@@ -36,6 +35,7 @@
             </div>
         </div>
     </nav>
+
     @yield('content')
 
 </body>
