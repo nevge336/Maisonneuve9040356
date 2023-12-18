@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="{{config ('app.url')}}">
                 <img src="{{ asset('images/logo_mms.png') }}" alt="mms logo acceuil" width="75" height="75" class="d-inline-block align-text-top" />
             </a>
 
@@ -26,8 +26,8 @@
                             Étudiant.e.s
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/student">Liste</a></li>
-                            <li><a class="dropdown-item" href="/student-create">Ajouter</a></li>
+                            <li><a class="dropdown-item" href="{{route ('students.index')}}">Liste</a></li>
+                            <li><a class="dropdown-item" href="{{route ('students.create')}}">Ajouter</a></li>
                         </ul>
                     </li>
                 </ul>
