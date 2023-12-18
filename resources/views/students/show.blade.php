@@ -2,6 +2,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+    <div class="col-12">
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+        </div>
+
         <div class="col-12 col-md-6 pt-2">
             <a href="{{ route('students.index')}}" class="btn btn-outline-primary">Retourner</a>
             <div class="card-header display-6">
