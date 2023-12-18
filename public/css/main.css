@@ -1,9 +1,17 @@
+/*Mettre la classe dans picture et l'image s'ajuste à son parent*/
 
+.image-hero {
+    position: relative;
+    display: flex;
+    height: 100vh;
+}
 
-/* Variables */
-@import url(variables/color.css);
-
-
-/* Components */
-@import url(components/image-hero.css);
+.image-hero > img {
+    /* position: absolute; */
+	inset: 0;
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
